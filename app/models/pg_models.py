@@ -1,26 +1,27 @@
-from sqlalchemy import Integer, String, Column, ForeignKey
+from db.base_class import Base
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-
-Base = declarative_base()
-
-class User(Base):
-    """User model."""
-    __tablename__ = 'user'
-    
-    id = Column(Integer, primary_key=True, autoincrement=True, index=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    email = Column(String, unique=True, index=True)
-    password = Column(String)
-    country_id = Column(Integer, ForeignKey('country.id'))
-    county = relationship("Country", back_populates='users')
 
 
 class Country(Base):
     """Country model."""
     __tablename__ = 'country'
 
+    name = Column(
+        String,
+        unique=True,
+        primary_key=True,
+        index=True
+    )
+    cities = relationship("City", back_populates='city_country')
+
+
+class City(Base):
+    """City model."""
+    __tablename__ = 'city'
+    
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     name = Column(String)
-    users = relationship("User", back_populates='country')
+    description = Column(String)
+    country = Column(String, ForeignKey('country.name'))
+    city_country = relationship("Country", back_populates='cities')

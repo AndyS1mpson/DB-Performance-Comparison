@@ -1,1 +1,1 @@
-from pg_models import *
+from .pg_models import *
