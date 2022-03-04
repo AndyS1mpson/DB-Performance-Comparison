@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  web:
+    build: ./app
+    volumes: './app:/app'
+    depends_on:
+      - postgres
+    ports:
+      - 8080:8080
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:12.9
+    volumes:
+      - postgres:/var/lib/postgresql/data/pgdata
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    env_file:
+      - .env
+    ports:
+      - 5433:5432
+
+volumes:
+  postgres:
