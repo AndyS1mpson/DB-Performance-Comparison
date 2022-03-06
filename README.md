@@ -17,6 +17,16 @@ Databases performance comparison study project
 -> *.env* — файл для перечисления всех используемых внутри сервиса переменных среды
 ```
 
+* Создайте виртуальную среду:
+~~~console
+python -m venv venv
+~~~
+
+* В виртуальном окружении установите зависимости:
+~~~console
+pip install -r app/requirements.txt
+~~~
+
 * В корневой папке создайте файл .env со следующими переменными:
 ~~~console
 APP_UVICORN_OPTIONS  
@@ -44,6 +54,11 @@ REMOTE_POSTGRES_PASSWORD
 REMOTE_POSTGRES_DB  
 REMOTE_POSTGRES_HOST  
 REMOTE_POSTGRES_URL  
+~~~
+
+* Экспортируйте переменные в окружающую среду:
+~~~console
+source app/scripts/export_env.sh
 ~~~
 
 * Запустите контейнер с базой данных следующей командой:
