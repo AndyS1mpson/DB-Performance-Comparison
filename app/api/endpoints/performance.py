@@ -15,6 +15,8 @@ router = APIRouter()
 @router.post(
     "/country/{amount}",
     status_code=status.HTTP_201_CREATED,
+    summary="Sends queries to local, dockerized and remote databases. \
+             Saves a graph of the time spent on each request"
 )
 def check_performance_with_country_model(amount: int):
     docker_db_session: Session = next(get_db_pg())
