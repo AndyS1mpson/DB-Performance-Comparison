@@ -1,18 +1,19 @@
 version: "3.9"
 
 services:
-  web:
-    build: ./app
-    volumes: 
-      - './app/:/app'
-    depends_on:
-      - postgres
-    ports:
-      - 8080:8080
-    environment:
-      - POSTGRES_HOST=postgres
-    env_file:
-      - .env
+  # web:
+  #   build: ./app
+  #   volumes: 
+  #     - './app/:/app'
+  #   depends_on:
+  #     - postgres
+  #   # ports:
+  #   #   - 8080:8080
+  #   expose:
+  #     - 8080
+  #   env_file:
+  #     - .env
+  #   network_mode: "host"
 
   postgres:
     image: postgres:12.9

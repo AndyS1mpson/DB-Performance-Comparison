@@ -9,6 +9,26 @@
             "database": "app",
             "username": "app_user",
             "password": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "local_db_connection",
+            "database": "local_app_db",
+            "username": "app_user",
+            "password": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "server": "tyke.db.elephantsql.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "remote_connection",
+            "database": "kczwjcdx",
+            "username": "kczwjcdx",
+            "password": "D5mZx_WyAfgxRVNp7Sy69TZl4lspMmba"
         }
     ]
 }

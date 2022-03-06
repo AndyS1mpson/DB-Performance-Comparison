@@ -1,9 +1,5 @@
-from typing import Any
-
 from sqlalchemy import MetaData
 from sqlalchemy.ext.declarative import as_declarative
-
-from db.session import engines
 
 postgres_metadata = MetaData(
     naming_convention={

@@ -4,7 +4,7 @@ import os
 import sys
 
 from db.base import Base
-from db.session import postgres_engine
+from db.session import docker_pg_engine, local_pg_engine, remote_pg_engine
 
 from alembic import context
 
@@ -40,7 +40,7 @@ class PostgresMigrator(Migrator):
 
 def run_migrations_online() -> None:
     if config.config_ini_section == "postgres":
-        migrator = PostgresMigrator(postgres_engine, Base.metadata)
+        migrator = PostgresMigrator(docker_pg_engine, Base.metadata)
 
     migrator.migrate()
 

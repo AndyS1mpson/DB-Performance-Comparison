@@ -39,4 +39,6 @@ def get_city_by_id(db: Session, city_id: int) -> schemas.CityOut:
             city data.
     """
     city = db.query(models.City).get(city_id)
+    if city is None:
+        return None
     return schemas.CityOut(**city.__dict__)
